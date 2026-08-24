@@ -32,13 +32,7 @@ export function useInsight(simulationId: string | undefined) {
       }
 
       try {
-        const result = await generateInsight({
-          income: simulation.income,
-          expenses: simulation.expenses,
-          debts: simulation.debts,
-          goalAmount: simulation.goalAmount,
-          goalDeadline: simulation.goalDeadline,
-        })
+        const result = await generateInsight(simulation)
         if (!cancelled) {
           setInsight(result)
           setIsLoading(false)

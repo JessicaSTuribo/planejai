@@ -7,6 +7,7 @@ import { PageHero } from '@/components/shared/PageHero'
 import { useSimulationStorage } from '@/hooks/useSimulationStorage'
 import { parseCurrency } from '@/utils/currency'
 import { formatBRL } from '@/utils/format'
+import { calcMonthlySavings } from '@/utils/simulation'
 
 export function SimulationResultsPage() {
   const { id } = useParams<{ id: string }>()
@@ -23,10 +24,7 @@ export function SimulationResultsPage() {
     )
   }
 
-  const income = parseCurrency(simulation.income)
-  const expenses = parseCurrency(simulation.expenses)
-  const debts = parseCurrency(simulation.debts)
-  const monthlySavingsAvailable = income - expenses - debts
+  const monthlySavingsAvailable = calcMonthlySavings(simulation)
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 sm:py-14">
