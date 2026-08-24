@@ -6,13 +6,7 @@ import { SimulationResultCard } from '@/components/features/SimulationResults/Ca
 import { PageHero } from '@/components/shared/PageHero'
 import { useSimulationStorage } from '@/hooks/useSimulationStorage'
 import { parseCurrency } from '@/utils/currency'
-
-function formatBRL(value: number): string {
-  return value.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  })
-}
+import { formatBRL } from '@/utils/format'
 
 export function SimulationResultsPage() {
   const { id } = useParams<{ id: string }>()
